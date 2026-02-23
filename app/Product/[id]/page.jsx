@@ -1,14 +1,11 @@
 "use client";
-import Image from "next/image";
 import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import Chart from "../../Component/Chart";
-import Link from "next/link";
 
 function Page() {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
   const { Id: id } = useParams();
 
   useEffect(() => {
@@ -32,17 +29,17 @@ function Page() {
   const tradingViewSymbol = data?.symbol ? `BINANCE:${data.symbol.toUpperCase()}USDT` : null;
 
   return (
-    <div className="w-full h-screen xl:overflow-hidden">
+    <div className="w-full h-screen xl:overflow-hidden bg-background text-foreground">
       {loading ? (
-        <h1>loading....</h1>
+        <h1 className="p-10">loading....</h1>
       ) : (
-        <div className="">
-          <div className="flex items-center gap-4">
+        <div className="p-4">
+          <div className="flex items-center gap-4 mb-4">
             {/* <Image src={data.image} alt="the" width={40} height={40} className="w-10 h-10" /> */}
             <h1 className="text-3xl font-bold">{data.name} </h1>
           </div>
-          <div className="w-full flex flex-row">
-            <div className="w-3/4 h-screen text-white font-bold">
+          <div className="w-full flex flex-row gap-4">
+            <div className="w-full lg:w-3/4 h-[80vh] font-bold">
               <Chart symbol={tradingViewSymbol} />
             </div>
             {/* <div className="bg-[#f0f1f2] w-1/4 p-6 rounded-2xl shadow-lg">

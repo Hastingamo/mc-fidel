@@ -1,14 +1,13 @@
 "use client";
 import React, { useState } from "react";
-import { motion, scale } from "framer-motion";
+import { motion } from "framer-motion";
 import { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { data } from "framer-motion/client";
+
 function Page() {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
-  const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredData, setFilteredData] = useState([]);
 
@@ -46,7 +45,7 @@ function Page() {
     //   )
   }, [searchTerm, data]);
   return (
-    <div className="bg-[#1B3358] w-full  h-full text-white  font-bold">
+    <div className="bg-secondary w-full h-full text-foreground font-bold transition-colors duration-300">
       <div className="grid grid-cols-1 md:grid-cols-2">
       <h1 className="ml-10 pt-5">Crypto page</h1>
       <input
@@ -54,7 +53,7 @@ function Page() {
         placeholder="Search by name or symbol"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        className=" mt-5 p-2 border-2 w-3/4 ml-5 xl:w-1/2 xl:ml-[20rem] rounded-lg text-black"
+        className=" mt-5 p-2 border-2 w-3/4 ml-5 xl:w-1/2 xl:ml-[20rem] rounded-lg bg-background text-foreground border-primary"
       />
       </div>
 
@@ -73,7 +72,7 @@ function Page() {
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 5 }}
-                transition={{ duration: 3 }}
+                transition={{ duration: 0.5 }}
                 whileHover={{ scale: 1.02 }}
                 key={index}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -81,7 +80,7 @@ function Page() {
               >
                 <Link
                   href={`/Product/${item.id}`}
-                  className="m-4 p-6 border-2 bg-gradient-to-br from-[#1B3358] to-[#06142E] xl:ml-[2rem] rounded-2xl xl:rounded-[10px] xl:pt-4 xl:pb-4 grid  md:grid-cols-2 lg:p-0 lg:grid-cols-4 xl:grid-cols-6"
+                  className="m-4 p-6 border-2 bg-primary border-secondary xl:ml-[2rem] rounded-2xl xl:rounded-[10px] xl:pt-4 xl:pb-4 grid md:grid-cols-2 lg:p-0 lg:grid-cols-4 xl:grid-cols-6 hover:shadow-lg transition-all"
                 >
                   <Image
                     src={item.image}
