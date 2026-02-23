@@ -4,6 +4,7 @@ import { motion, scale } from "framer-motion";
 import { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { data } from "framer-motion/client";
 function Page() {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
@@ -36,15 +37,13 @@ function Page() {
       );
     });
     setFilteredData(filtered);
-    if (!data) {
-      setFilteredData([]);
-      return(
-        <div className="flex items-center justify-center h-screen">
-          <p className="text-2xl font-bold text-red-500">No data available</p>
-        </div>
-      )
-
-    }
+    // if (!data) {
+    //   setFilteredData([]);
+    //   return(
+    //     <div className="flex items-center justify-center h-screen">
+    //       <p className="text-2xl font-bold text-red-500">No data available</p>
+    //     </div>
+    //   )
   }, [searchTerm, data]);
   return (
     <div className="bg-[#1B3358] w-full  h-full text-white  font-bold">
