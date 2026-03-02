@@ -80,7 +80,7 @@ function Page() {
           {searchTerm && filteredNews.length === 0 ? (
             <p className="text-center text-red-500 mt-6">News not found</p>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 ">
               {news.map((item, index) => (
                 <motion.div
                   key={index}
