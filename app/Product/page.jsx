@@ -68,7 +68,7 @@ function Page() {
           viewport={{ once: true }}
           whileInView={{ opacity: 1, y: 0 }}
         >
-          <div className="grid grid-cols-1 ">
+          <div className="grid grid-cols-1 md:grid-rows-2 ">
             {filteredData.map((item, index) => (
               <motion.div
                 initial={{ opacity: 0, x: -30 }}

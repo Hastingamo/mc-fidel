@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Loader from "../Component/Loadings";
 
 function Page() {
   const [loading, setLoading] = useState(true);
@@ -12,20 +13,6 @@ function Page() {
   const apikey = "d3s1cj1r01qldtrbhibgd3s1cj1r01qldtrbhic0";
 
   useEffect(() => {
-    // const fetchNewsData = async () => {
-    //   try {
-    //     const response = await fetch(
-    // fetch(`https://finnhub.io/api/v1/news?category=crypto&token=${apikey}`)
-    //     );
-    //     const data = await response.json();
-    //     setNews(data);
-    //   } catch (error) {
-    //     setError(error);
-    //   } finally {
-    //     setLoading(false);
-    //   }
-    // };
-
     const newss = () => {
       fetch(`https://finnhub.io/api/v1/news?category=crypto&token=${apikey}`)
         .then((response) => response.json())
@@ -54,7 +41,7 @@ function Page() {
   //   }, [searchTerm, news]);
 
   return (
-    <div className="bg-[#bfb4b0] w-full">
+    <div className="bg-[#b6abcf] w-full">
       <div className="grid grid-cols-1 md:grid-cols-2">
         <h1 className="ml-10 pt-5">Crypto page</h1>
         <input
@@ -73,7 +60,10 @@ function Page() {
       )}
 
       {loading ? (
-        <p className="text-center mt-6">Loading....</p>
+        <div className="flex items-center justify-center h-screen">
+       <Loader/>
+
+        </div>
       ) : (
         <motion.div>
           {searchTerm && filteredNews.length === 0 ? (
@@ -84,7 +74,7 @@ function Page() {
               {news.map((item, index) => (
                 <motion.div
                   key={index}
-                  className="bg-[#C9B59C] m-4 p-4 rounded-lg gap-4 shadow-lg grid grid-cols-2"
+                  className="bg-[#fbe4d8] text-[] m-4 p-4 rounded-lg gap-4 shadow-lg grid grid-cols-2"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
