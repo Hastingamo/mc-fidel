@@ -9,8 +9,7 @@ function Page() {
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredNews, setFilteredNews] = useState([]);
-    const apikey = "d3s1cj1r01qldtrbhibgd3s1cj1r01qldtrbhic0";
-
+  const apikey = "d3s1cj1r01qldtrbhibgd3s1cj1r01qldtrbhic0";
 
   useEffect(() => {
     // const fetchNewsData = async () => {
@@ -27,32 +26,32 @@ function Page() {
     //   }
     // };
 
-      const newss = () => {
-    fetch(`https://finnhub.io/api/v1/news?category=crypto&token=${apikey}`)
-      .then((response) => response.json())
-      .then((newsData) => {
-        setNews(newsData);
-        setLoading(false);
-        console.log(newsData);
-      });
-  };
+    const newss = () => {
+      fetch(`https://finnhub.io/api/v1/news?category=crypto&token=${apikey}`)
+        .then((response) => response.json())
+        .then((newsData) => {
+          setNews(newsData);
+          setLoading(false);
+          console.log(newsData);
+        });
+    };
     newss();
   }, []);
 
-//   useEffect(() => {
-//     if (!Array.isArray(news)) {
-//       setFilteredNews([]);
-//       return;
-//     }
-//     const term = searchTerm?.toLowerCase() || "";
-//     const filtered = news.filter((item) => {
-//       return (
-//         item.headline?.toLowerCase().includes(term) ||
-//         item.summary?.toLowerCase().includes(term)
-//       );
-//     });
-//     setFilteredNews(filtered);
-//   }, [searchTerm, news]);
+  //   useEffect(() => {
+  //     if (!Array.isArray(news)) {
+  //       setFilteredNews([]);
+  //       return;
+  //     }
+  //     const term = searchTerm?.toLowerCase() || "";
+  //     const filtered = news.filter((item) => {
+  //       return (
+  //         item.headline?.toLowerCase().includes(term) ||
+  //         item.summary?.toLowerCase().includes(term)
+  //       );
+  //     });
+  //     setFilteredNews(filtered);
+  //   }, [searchTerm, news]);
 
   return (
     <div className="bg-[#bfb4b0] w-full">
@@ -80,32 +79,37 @@ function Page() {
           {searchTerm && filteredNews.length === 0 ? (
             <p className="text-center text-red-500 mt-6">News not found</p>
           ) : (
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 ">
+            // <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 ">
+            <div className="grid grid-col-1 md:grid-cols-2 xl:grid-cols-3">
               {news.map((item, index) => (
                 <motion.div
                   key={index}
-                  className="bg-[#C9B59C] m-4 p-4 rounded-lg shadow-lg"
+                  className="bg-[#C9B59C] m-4 p-4 rounded-lg gap-4 shadow-lg grid grid-cols-2"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                 >
-                <Image
-                  src={item.image}
-                  alt={item.headline}
-                  width={400}
-                  height={200}
-                  unoptimized
-                  className="rounded-lg object-cover w-full h-48"
-                />
-                <p className="text-sm text-gray-600">{item.headline}</p>
-                <a
-                  href={item.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-500"
-                >
-                  Read more
-                </a>
+                  <div>
+                    <Image
+                      src={item.image}
+                      alt={item.headline}
+                      width={400}
+                      height={200}
+                      unoptimized
+                      className="rounded-lg object-cover w-full h-48"
+                    />
+                  </div>
+                  <div className="flex justify-center items-center flex-col">
+                    <p className="text-sm text-gray-600">{item.headline}</p>
+                    <a
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-500"
+                    >
+                      Read more
+                    </a>
+                  </div>
                 </motion.div>
               ))}
             </div>

@@ -29,7 +29,8 @@ function Page() {
     fecthData();
   }, [id]);
 
-  const tradingViewSymbol = data?.symbol ? `BINANCE:${data.symbol.toUpperCase()}USDT` : null;
+  // const tradingViewSymbol = data?.symbol ? `BINANCE:${data.symbol.toUpperCase()}USDT` : null;
+  const tradingViewSymbol = `BINANCE:${data.symbol.toUpperCase()}USDT`;
 
   return (
     <div className="w-full h-screen xl:overflow-hidden">

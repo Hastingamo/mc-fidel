@@ -8,12 +8,14 @@ function Headerss() {
   const { theme, setTheme } = useTheme(); 
   const [mounted, setMounted] = useState(false);
 
-  const mounthed =() => {
+  const mounthed = () => {
     setMounted(true);
   }
 
   useEffect(() => {
     mounthed();
+        setMounted(true);
+
   }, []);
 
   return (
