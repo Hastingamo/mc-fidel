@@ -77,48 +77,60 @@ function Page() {
           viewport={{ once: true }}
           whileInView={{ opacity: 1, y: 0 }}
         >
-          <motion.div variants={container} initial="hidden" animate="visible">
-            {filteredData.map((item, index) => (
-              <motion.div
-                variants={items}
-                whileHover={{ scale: 1.02 }}
-                key={index}
-                whileInView={{ opacity: 1, y: 0 }}
-                className="lg:text-[18px]"
-              >
-                <Link
-                  href={`/Product/${item.id}`}
-                  className="m-4 p-6 border-2 bg-gradient-to-br from-[#1B3358] to-[#06142E] xl:ml-[2rem] rounded-2xl xl:rounded-[10px] xl:pt-4 xl:pb-4 grid  md:grid-cols-2 lg:p-0 lg:grid-cols-4 xl:grid-cols-6"
+          {searchTerm && filteredData.length === 0 ? (
+            <div className="h-screen flex justify-center items-center flex-col ">
+              <Image
+              src="/Image/downloads.jfif"
+                alt="coin not found"
+                width={200}
+                height={200}
+              />
+              <p className="text-center text-red-500 mt-6">coin not found</p>
+            </div>
+          ) : (
+            <motion.div variants={container} initial="hidden" animate="visible">
+              {filteredData.map((item, index) => (
+                <motion.div
+                  variants={items}
+                  whileHover={{ scale: 1.02 }}
+                  key={index}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  className="lg:text-[18px]"
                 >
-                  <Image
-                    src={item.image}
-                    alt={item.name}
-                    width={50}
-                    height={50}
-                  />
-                  <p>
-                    #{index + 1} {item.name} ({item.symbol.toUpperCase()} ||{" "}
-                    {item.category})
-                  </p>
-                  <p>💰 Price: ${item.current_price.toLocaleString()}</p>
-                  <p>📈 Market Cap: ${item.market_cap.toLocaleString()}</p>
-                  <p
-                    className={`font-semibold ${
-                      (item.price_change_percentage_24h ?? 0) > 0
-                        ? "text-green-500"
-                        : "text-red-500"
-                    }`}
+                  <Link
+                    href={`/Product/${item.id}`}
+                    className="m-4 p-6 border-2 bg-gradient-to-br from-[#1B3358] to-[#06142E] xl:ml-[2rem] rounded-2xl xl:rounded-[10px] xl:pt-4 xl:pb-4 grid  md:grid-cols-2 lg:p-0 lg:grid-cols-4 xl:grid-cols-6"
                   >
-                    1min Change:{" "}
-                    {typeof item.price_change_percentage_24h === "number"
-                      ? `${item.price_change_percentage_24h.toFixed(2)}%`
-                      : "N/A"}
-                  </p>
-                  <p>🔄 Volume: ${item.total_volume.toLocaleString()}</p>
-                </Link>
-              </motion.div>
-            ))}
-          </motion.div>
+                    <Image
+                      src={item.image}
+                      alt={item.name}
+                      width={50}
+                      height={50}
+                    />
+                    <p>
+                      #{index + 1} {item.name} ({item.symbol.toUpperCase()} ||{" "}
+                      {item.category})
+                    </p>
+                    <p>💰 Price: ${item.current_price.toLocaleString()}</p>
+                    <p>📈 Market Cap: ${item.market_cap.toLocaleString()}</p>
+                    <p
+                      className={`font-semibold ${
+                        (item.price_change_percentage_24h ?? 0) > 0
+                          ? "text-green-500"
+                          : "text-red-500"
+                      }`}
+                    >
+                      1min Change:{" "}
+                      {typeof item.price_change_percentage_24h === "number"
+                        ? `${item.price_change_percentage_24h.toFixed(2)}%`
+                        : "N/A"}
+                    </p>
+                    <p>🔄 Volume: ${item.total_volume.toLocaleString()}</p>
+                  </Link>
+                </motion.div>
+              ))}
+            </motion.div>
+          )}
         </motion.div>
       )}
     </div>

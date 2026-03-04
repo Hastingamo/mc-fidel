@@ -22,33 +22,48 @@ function Page() {
   const apikey = "d3s1cj1r01qldtrbhibgd3s1cj1r01qldtrbhic0";
 
   useEffect(() => {
-    const newss = () => {
-      fetch(`https://finnhub.io/api/v1/news?category=crypto&token=${apikey}`)
-        .then((response) => response.json())
-        .then((newsData) => {
-          setNews(newsData);
-          setLoading(false);
-          console.log(newsData);
-        });
+    // const newss = () => {
+    //   fetch(`https://finnhub.io/api/v1/news?category=crypto&token=${apikey}`)
+    //     .then((response) => response.json())
+    //     .then((newsData) => {
+    //       setNews(newsData);
+    //       setLoading(false);
+    //       console.log(newsData);
+    //     });
+    // };
+    // newss();
+        const fetchNews = async () => {
+      try {
+        const response = await fetch(
+          `https://finnhub.io/api/v1/news?category=crypto&token=${apikey}`
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch news");
+        }
+
+        const newsData = await response.json();
+        setNews(newsData);
+        setFilteredNews(newsData); // initialize filtered
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
     };
-    newss();
+
+    fetchNews();
   }, []);
 
-    useEffect(() => {
-      if (!Array.isArray(news)) {
-        setFilteredNews([]);
-        return;
-      }
-      const term = searchTerm?.toLowerCase() || "";
-      const filtered = news.filter((item) => {
-        return (
-          item.headline?.toLowerCase().includes(term) ||
-          item.summary?.toLowerCase().includes(term)
-        );
-      });
-      setFilteredNews(filtered);
-    }, [searchTerm, news]);
+  useEffect(() => {
+    const filtered = news.filter(
+      (item) =>
+        item?.headline?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item?.category?.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
+    setFilteredNews(filtered);
+  }, [searchTerm, news]);
 
   return (
     <div className="bg-[#b6abcf] w-full">
@@ -76,7 +91,15 @@ function Page() {
       ) : (
         <motion.div>
           {searchTerm && filteredNews.length === 0 ? (
-            <p className="text-center text-red-500 mt-6">News not found</p>
+               <div className="h-screen flex justify-center items-center flex-col ">
+                    <Image
+                    src="/Image/downloads.jfif"
+                      alt="coin not found"
+                      width={200}
+                      height={200}
+                    />
+                    <p className="text-center text-red-500 mt-6">coin not found</p>
+                  </div>
           ) : (
             // <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 ">
             <motion.div
@@ -85,7 +108,7 @@ function Page() {
               animate="visible"
               className="grid grid-col-1 md:grid-cols-2 xl:grid-cols-3"
             >
-              {news.map((item, index) => (
+              {filteredNews.map((item, index) => (
                 <motion.div
                   key={index}
                   className="bg-white text-[] m-4 p-4 rounded-lg gap-4 shadow-lg grid grid-cols-2"
