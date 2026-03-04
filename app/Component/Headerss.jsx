@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useTheme } from "next-themes";
 import { Sun, Moon } from "lucide-react";
 import Image from "next/image";
+import SideBarss from "./SideBarss";
 
 function Headerss() {
   const { theme, setTheme } = useTheme();
@@ -20,7 +21,7 @@ function Headerss() {
 
   return (
     <>
-      <div className="flex flex-row text-white md:flex md:gap-10 md:flex-row md:p-4 bg-[#06142E]">
+      <div className="hidden text-white md:flex md:gap-10 md:flex-row md:p-4 bg-[#06142E]">
         <Link href="/">
           <Image src="/Image/bossvnnlogo.png" alt="logo" width={40} height={40} className="w-10 h-10 rounded-full" />
         </Link>
@@ -57,7 +58,7 @@ function Headerss() {
       </div>
 
       <div className="grid p-4 grid-cols-4 md:hidden">
-        <h1>Dams</h1>
+          <Image src="/Image/bossvnnlogo.png" alt="logo" width={40} height={40} className="w-10 h-10 rounded-full" />
         <button
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
           className="ml-auto p-2 rounded-lg bg-secondary hover:opacity-80 transition-all"
@@ -69,6 +70,7 @@ function Headerss() {
         <Link href="/Login">
           <h1>login</h1>
         </Link>
+       <SideBarss/>
       </div>
     </>
   );

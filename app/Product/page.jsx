@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { data } from "framer-motion/client";
+import Loader from "../Component/Loadingss";
 
 const container = {
   hidden: { opacity: 0 },
@@ -68,7 +69,10 @@ function Page() {
       </div>
 
       {loading ? (
-        <p>Loading...</p>
+        <div className="flex items-center justify-center h-screen">
+              <Loader/>
+        </div>
+    
       ) : (
         <motion.div
           initial={{ opacity: 0 }}
