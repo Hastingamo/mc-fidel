@@ -5,6 +5,15 @@ import { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { data } from "framer-motion/client";
+
+const container = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
+};
+const items = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
 function Page() {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
@@ -48,14 +57,14 @@ function Page() {
   return (
     <div className="bg-[#1B3358] w-full  h-full text-white  font-bold">
       <div className="grid grid-cols-1 md:grid-cols-2">
-      <h1 className="ml-10 pt-5">Crypto page</h1>
-      <input
-        type="text"
-        placeholder="Search by name or symbol"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        className=" mt-5 p-2 border-2 w-3/4 ml-5 xl:w-1/2 xl:ml-[20rem] rounded-lg text-black"
-      />
+        <h1 className="ml-10 pt-5">Crypto page</h1>
+        <input
+          type="text"
+          placeholder="Search by name or symbol"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className=" mt-5 p-2 border-2 w-3/4 ml-5 xl:w-1/2 xl:ml-[20rem] rounded-lg text-black"
+        />
       </div>
 
       {loading ? (
@@ -68,12 +77,10 @@ function Page() {
           viewport={{ once: true }}
           whileInView={{ opacity: 1, y: 0 }}
         >
-          <div className="grid grid-cols-1 md:grid-rows-2 ">
+          <motion.div variants={container} initial="hidden" animate="visible">
             {filteredData.map((item, index) => (
               <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 5 }}
-                transition={{ duration: 3 }}
+                variants={items}
                 whileHover={{ scale: 1.02 }}
                 key={index}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -111,7 +118,7 @@ function Page() {
                 </Link>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </motion.div>
       )}
     </div>

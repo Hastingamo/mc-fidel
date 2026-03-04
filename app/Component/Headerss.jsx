@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { Sun, Moon } from "lucide-react";
+import Image from "next/image";
 
 function Headerss() {
   const { theme, setTheme } = useTheme();
@@ -19,9 +20,9 @@ function Headerss() {
 
   return (
     <>
-      <div className="hidden text-white md:flex md:gap-10 md:flex-row md:p-4 bg-[#06142E]">
+      <div className="flex flex-row text-white md:flex md:gap-10 md:flex-row md:p-4 bg-[#06142E]">
         <Link href="/">
-          <h1>Dams</h1>
+          <Image src="/Image/bossvnnlogo.png" alt="logo" width={40} height={40} className="w-10 h-10 rounded-full" />
         </Link>
         <Link href="/Product">
           <h1>Crypto page</h1>

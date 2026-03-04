@@ -4,6 +4,15 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Loader from "../Component/Loadings";
 
+const container = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
+};
+const items = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
+
 function Page() {
   const [loading, setLoading] = useState(true);
   const [news, setNews] = useState([]);
@@ -25,25 +34,26 @@ function Page() {
     newss();
   }, []);
 
-  //   useEffect(() => {
-  //     if (!Array.isArray(news)) {
-  //       setFilteredNews([]);
-  //       return;
-  //     }
-  //     const term = searchTerm?.toLowerCase() || "";
-  //     const filtered = news.filter((item) => {
-  //       return (
-  //         item.headline?.toLowerCase().includes(term) ||
-  //         item.summary?.toLowerCase().includes(term)
-  //       );
-  //     });
-  //     setFilteredNews(filtered);
-  //   }, [searchTerm, news]);
+    useEffect(() => {
+      if (!Array.isArray(news)) {
+        setFilteredNews([]);
+        return;
+      }
+      const term = searchTerm?.toLowerCase() || "";
+      const filtered = news.filter((item) => {
+        return (
+          item.headline?.toLowerCase().includes(term) ||
+          item.summary?.toLowerCase().includes(term)
+        );
+      });
+      setFilteredNews(filtered);
+    }, [searchTerm, news]);
+
 
   return (
     <div className="bg-[#b6abcf] w-full">
       <div className="grid grid-cols-1 md:grid-cols-2">
-        <h1 className="ml-10 pt-5">Crypto page</h1>
+        <h1 className="ml-10 pt-5">News page</h1>
         <input
           type="text"
           placeholder="Search by name or symbol"
@@ -61,8 +71,7 @@ function Page() {
 
       {loading ? (
         <div className="flex items-center justify-center h-screen">
-       <Loader/>
-
+          <Loader />
         </div>
       ) : (
         <motion.div>
@@ -70,14 +79,18 @@ function Page() {
             <p className="text-center text-red-500 mt-6">News not found</p>
           ) : (
             // <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 ">
-            <div className="grid grid-col-1 md:grid-cols-2 xl:grid-cols-3">
+            <motion.div
+              variants={container}
+              initial="hidden"
+              animate="visible"
+              className="grid grid-col-1 md:grid-cols-2 xl:grid-cols-3"
+            >
               {news.map((item, index) => (
                 <motion.div
                   key={index}
-                  className="bg-[#fbe4d8] text-[] m-4 p-4 rounded-lg gap-4 shadow-lg grid grid-cols-2"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
+                  className="bg-white text-[] m-4 p-4 rounded-lg gap-4 shadow-lg grid grid-cols-2"
+                  variants={items}
+                  //   transition={{ delay: index * 0.1 }}
                 >
                   <div>
                     <Image
@@ -102,7 +115,7 @@ function Page() {
                   </div>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
           )}
         </motion.div>
       )}
