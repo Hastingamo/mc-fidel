@@ -1,6 +1,7 @@
-import React from 'react'
+"use client";
+import React from 'react';
 
-function page() {
+function Page() {
   return (
     <div className="bg-background text-foreground min-h-screen flex flex-col items-center justify-center p-8">
       <h1 className="text-5xl font-bold mb-4 text-center">Welcome to Dams Crypto</h1>
@@ -11,4 +12,4 @@ function page() {
   )
 }
 
-export default page
+export default Page

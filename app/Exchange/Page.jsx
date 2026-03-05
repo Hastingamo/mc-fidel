@@ -1,5 +1,6 @@
 "use client";
 import React from 'react'
+
 function Page() {
   return (
     <div className="bg-background text-foreground min-h-screen p-8">

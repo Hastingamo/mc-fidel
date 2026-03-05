@@ -45,7 +45,7 @@ function Page() {
     //   )
   }, [searchTerm, data]);
   return (
-    <div className="bg-secondary w-full h-full text-foreground font-bold transition-colors duration-300">
+    <div className="bg-secondary w-full h-full text-foreground font-bold">
       <div className="grid grid-cols-1 md:grid-cols-2">
       <h1 className="ml-10 pt-5">Crypto page</h1>
       <input
