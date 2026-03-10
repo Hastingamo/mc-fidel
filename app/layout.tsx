@@ -5,6 +5,7 @@ import Headerss from "./Component/Headerss";
 import Footer from "./Component/Footer";
 import { ThemeProvider } from "next-themes";
 import SideBarss from "./Component/SideBarss";
+import MainLayOut from "./Component/MainLayOut";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -36,11 +37,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Headerss />
-
-          {children}
-
-          <Footer />
+       <MainLayOut>
+         <Headerss />
+            {children}
+            <Footer />
+       </MainLayOut>
+           
         </ThemeProvider>
       </body>
     </html>

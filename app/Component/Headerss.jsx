@@ -31,7 +31,7 @@ function Headerss() {
         <Link href="/Login">
           <h1>Login</h1>
         </Link>
-        <Link href="/Signup">
+        <Link href="/SignUp">
           <h1>Sign Up</h1>
         </Link>
         <Link href="/News">
@@ -46,6 +46,7 @@ function Headerss() {
         <Link href="/Community">
           <h1>Community page</h1>
         </Link>
+        
 
         <button
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
