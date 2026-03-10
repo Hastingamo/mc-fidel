@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useTheme } from "next-themes";
 import { Sun, Moon } from "lucide-react";
 import Image from "next/image";
-import SideBarss from "./SideBarss";
 
 function Headerss() {
   const { theme, setTheme } = useTheme();
@@ -70,7 +69,6 @@ function Headerss() {
         <Link href="/Login">
           <h1>login</h1>
         </Link>
-       <SideBarss/>
       </div>
     </>
   );
