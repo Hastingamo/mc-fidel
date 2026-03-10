@@ -29,7 +29,7 @@ const SideBarss = ({ isOpen, setIsOpen }) => {
 
   return (
     <div
-      className={`fixed top-0 left-0 h-screen z-50 bg-[#e4c2bd] transition-all duration-300 ${
+      className={`fixed top-0 left-0 h-screen z-50 bg-[#e4c2bd] transition-all duration-300 md:hidden ${
         isOpen ? "w-64" : "w-20"
       }`}
       onMouseEnter={() => setIsOpen(true)}

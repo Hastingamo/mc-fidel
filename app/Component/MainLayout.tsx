@@ -11,8 +11,8 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
       <SideBarss isOpen={isOpen} setIsOpen={setIsOpen} />
       <div
         className={`transition-all duration-300 ${
-          isOpen ? "md:pl-64" : "md:pl-20"
-        } pl-20`}
+          isOpen ? "pl-64" : "pl-20"
+        } md:pl-0`}
       >
         {children}
       </div>
