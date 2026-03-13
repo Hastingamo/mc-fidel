@@ -127,7 +127,7 @@ function Page() {
 
       <button
         type="submit"
-        className="bg-primary text-white font-bold px-6 py-4 rounded-xl w-full shadow-lg"
+        className="bg-white p-4 border-2 shawdow-lg"
       >
         {buttonText}
       </button>
@@ -171,7 +171,7 @@ function Page() {
                   type="text"
                   value={fromThisCurrency}
                   onChange={(e) => setFromThisCurrency(e.target.value)}
-                  className="w-full border border-border bg-background rounded-lg p-3 outline-none focus:ring-2 focus:ring-primary/50"
+                  className="w-[80%] md:w-full border border-border bg-background rounded-lg p-3 outline-none focus:ring-2 focus:ring-primary/50"
                   placeholder="e.g. USDT"
                   list="coins-list"
                   required
@@ -187,7 +187,7 @@ function Page() {
                   type="text"
                   value={toThisCurrency}
                   onChange={(e) => setToThisCurrency(e.target.value)}
-                  className="w-full border border-border bg-background rounded-lg p-3 outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                  className="w-[80%] md:w-full border border-border bg-background rounded-lg p-3 outline-none focus:ring-2 focus:ring-primary/50"
                   placeholder="e.g. BTC"
                   list="coins-list"
                   required
@@ -203,7 +203,7 @@ function Page() {
                   type="number"
                   value={amount}
                   onChange={(e) => setAmount(e.target.value)}
-                  className="w-full border border-border bg-background rounded-lg p-3 outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                  className="w-[80%] md:w-full border border-border bg-background rounded-lg p-3 outline-none focus:ring-2 focus:ring-primary/50"
                   placeholder="0.00"
                   required
                 />
@@ -211,7 +211,7 @@ function Page() {
 
               <button
                 type="submit"
-                className="bg-primary text-white font-bold px-6 py-4 rounded-xl w-full shadow-lg"
+               className="bg-white p-4 border-2 shawdow-lg"
               >
                SWAP ASSETS
               </button>
@@ -238,13 +238,13 @@ function Page() {
         </h1>
 
         <div className="w-full md:w-3/4 mx-auto border border-border bg-secondary/20 rounded-2xl overflow-hidden shadow-2xl min-h-[500px] grid md:grid-cols-[1fr_2fr]">
-          <div className="flex flex-wrap md:flex-col justify-around md:justify-start gap-4 p-4 md:p-6 bg-secondary/40 border-b md:border-b-0 md:border-r border-border">
+            <div className="flex flex-row md:flex-col gap-4 p-4 md:p-6 bg-secondary/40 border-b md:border-b-0 md:border-r border-border">
             <button
               onClick={() => setActiveTab("sell")}
                  className={`flex items-center gap-2 px-6 py-3 rounded-xl ${
                 activeTab === "sell" 
-                  ? "bg-primary text-white shadow-lg" 
-                  : "bg-background text-foreground"
+                  ? "bg-white p-4 border-2 shawdow-lg" 
+                  : ""
               }`}
             >
               <TrendingDown size={20} />
@@ -255,8 +255,8 @@ function Page() {
               onClick={() => setActiveTab("buy")}
                className={`flex items-center gap-2 px-6 py-3 rounded-xl ${
                 activeTab === "buy" 
-                  ? "bg-primary text-white shadow-lg" 
-                  : "bg-background text-foreground"
+                  ? "bg-white p-4 border-2 shawdow-lg" 
+                  : ""
               }`}
             >
               <TrendingUp size={20} />
@@ -267,8 +267,8 @@ function Page() {
               onClick={() => setActiveTab("swap")}
               className={`flex items-center gap-2 px-6 py-3 rounded-xl ${
                 activeTab === "swap" 
-                  ? "bg-primary text-white shadow-lg" 
-                  : "bg-background text-foreground"
+                  ? "bg-white p-4 border-2 shawdow-lg" 
+                  : ""
               }`}
             >
               <ArrowRightLeft size={20} />
