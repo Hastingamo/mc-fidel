@@ -28,17 +28,17 @@ function Page() {
           <motion.div
             variants={items}
  
-            className="border-2 p-4 gap-4 shadow-lg rounded-lg"
+            className="border-2 flex flex-row p-4 gap-4 shadow-lg rounded-lg"
             key={item.name}
           >
             <Image
               className="items-center justify-center "
               src={item.images}
-              width={200}
-              height={200}
+              width={100}
+              height={50}
               alt={item.name}
             />
-            <div>
+            <div className="flex flex-col gap-4">
               <h2>{item.name}</h2>
               <p>{item.discreption}</p>
               <div className="bg-sky-500">
