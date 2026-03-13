@@ -336,7 +336,7 @@ function Page() {
 
       <button
         type="submit"
-        className="bg-primary hover:bg-primary/90 text-white font-bold px-6 py-4 rounded-xl w-full shadow-lg transition-all active:scale-[0.98]"
+        className="bg-primary text-white font-bold px-6 py-4 rounded-xl w-full shadow-lg"
       >
         {buttonText}
       </button>
@@ -380,7 +380,7 @@ function Page() {
                   type="text"
                   value={fromThisCurrency}
                   onChange={(e) => setFromThisCurrency(e.target.value)}
-                  className="w-fit md:w-full  border border-border bg-background rounded-lg p-3 outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                  className="w-full border border-border bg-background rounded-lg p-3 outline-none focus:ring-2 focus:ring-primary/50"
                   placeholder="e.g. USDT"
                   list="coins-list"
                   required
@@ -420,7 +420,7 @@ function Page() {
 
               <button
                 type="submit"
-                className="bg-primary hover:bg-primary/90 text-white font-bold px-6 py-4 rounded-xl w-full shadow-lg transition-all active:scale-[0.98]"
+                className="bg-primary text-white font-bold px-6 py-4 rounded-xl w-full shadow-lg"
               >
                SWAP ASSETS
               </button>
@@ -441,19 +441,19 @@ function Page() {
       className="bg-background text-foreground w-full min-h-screen p-4 font-bold"
     >
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-3xl mb-8 flex items-center gap-3">
+        <h1 className="text-3xl mb-6 md:mb-8 flex items-center gap-3">
           <ArrowRightLeft className="text-primary" />
           Exchange Assets
         </h1>
 
         <div className="w-full md:w-3/4 mx-auto border border-border bg-secondary/20 rounded-2xl overflow-hidden shadow-2xl min-h-[500px] grid md:grid-cols-[1fr_2fr]">
-          <div className="flex md:flex-col justify-around md:justify-start gap-4 p-6 bg-secondary/40 border-b md:border-b-0 md:border-r border-border">
+          <div className="flex flex-wrap md:flex-col justify-around md:justify-start gap-4 p-4 md:p-6 bg-secondary/40 border-b md:border-b-0 md:border-r border-border">
             <button
               onClick={() => setActiveTab("sell")}
-              className={`flex items-center gap-2 px-6 py-3 rounded-xl transition-all duration-200 ${
+              className={`flex items-center gap-2 px-6 py-3 rounded-xl ${
                 activeTab === "sell" 
-                  ? "bg-primary text-white shadow-lg scale-105" 
-                  : "bg-background hover:bg-secondary"
+                  ? "bg-primary text-white shadow-lg"
+                  : "bg-background text-foreground"
               }`}
             >
               <TrendingDown size={20} />
@@ -462,10 +462,10 @@ function Page() {
 
             <button
               onClick={() => setActiveTab("buy")}
-              className={`flex items-center gap-2 px-6 py-3 rounded-xl transition-all duration-200 ${
+              className={`flex items-center gap-2 px-6 py-3 rounded-xl ${
                 activeTab === "buy" 
-                  ? "bg-primary text-white shadow-lg scale-105" 
-                  : "bg-background hover:bg-secondary text-black"
+                  ? "bg-primary text-white shadow-lg"
+                  : "bg-background text-foreground"
               }`}
             >
               <TrendingUp size={20} />
@@ -474,10 +474,10 @@ function Page() {
 
             <button
               onClick={() => setActiveTab("swap")}
-              className={`flex items-center gap-2 px-6 py-3 rounded-xl transition-all duration-200 ${
+              className={`flex items-center gap-2 px-6 py-3 rounded-xl ${
                 activeTab === "swap" 
-                  ? "bg-primary text-white shadow-lg scale-105" 
-                  : "bg-background hover:bg-secondary"
+                  ? "bg-primary text-white shadow-lg"
+                  : "bg-background text-foreground"
               }`}
             >
               <ArrowRightLeft size={20} />
@@ -485,7 +485,7 @@ function Page() {
             </button>
           </div>
 
-          <div className="p-8 relative">
+          <div className="p-5 md:p-8 relative">
             {loading && (
               <div className="absolute inset-0 bg-background/50 backdrop-blur-sm flex items-center justify-center z-10 rounded-r-2xl">
                 <Loader2 className="animate-spin text-primary" size={40} />
