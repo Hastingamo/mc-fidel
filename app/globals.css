@@ -3,6 +3,8 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary: #22c55e;
+  --secondary: #f3f4f6;
 }
 
 @theme inline {
@@ -17,10 +19,19 @@
   --color-secondary: var(--secondary);
 }
 
+.dark {
+  --background: #06142e;
+  --foreground: #ffffff;
+  --primary: #10b981;
+  --secondary: #1b3358;
+}
+
 @media (prefers-color-scheme: dark) {
-  :root {
-  --primary: #06142E;
-  --secondary: #1B3358;
+  :root:not(.light) {
+    --background: #06142e;
+    --foreground: #ffffff;
+    --primary: #10b981;
+    --secondary: #1b3358;
   }
 }
 
