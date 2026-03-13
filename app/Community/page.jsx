@@ -1,55 +1,79 @@
 "use client";
+
 import React from "react";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import name from "../Component/community.json";
+import community from "../Component/community.json";
 import Link from "next/link";
 import Image from "next/image";
+
 const container = {
-  hidden : { opacity: 0 },
-  visible : { opacity: 1, transition: { staggerChildren: 0.5, } }
+hidden: { opacity: 0 },
+visible: {
+opacity: 1,
+transition: { staggerChildren: 0.2 }
 }
-const items = {
-  hidden : { opacity: 0, y: 20 },
-  visible : { opacity: 1, y: 0, }
-}
+};
+
+const item = {
+hidden: { opacity: 0, y: 20 },
+visible: { opacity: 1, y: 0 }
+};
+
 function Page() {
-  return (
-    <div className="flex justify-center items-center flex-col ">
-      <h1>Community page</h1>
+return ( <div className="flex flex-col items-center min-h-screen py-10 px-4">
+
+```
+  {/* Page Title */}
+  <h1 className="text-3xl md:text-4xl font-bold mb-8 text-center">
+    Join Our Community
+  </h1>
+
+  {/* Community Cards */}
+  <motion.div
+    variants={container}
+    initial="hidden"
+    animate="visible"
+    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl w-full"
+  >
+    {community.map((item) => (
       <motion.div
-        variants={container}
-        initial="hidden"
-        animate="visible"
- 
-        className="grid grid-cols-1 md:grid-cols-2 justify-center items-center gap-4 p-4 w-[90%]"
+        key={item.name}
+        variants={item}
+        whileHover={{ scale: 1.03 }}
+        className="flex gap-4 p-5 border rounded-xl shadow-md hover:shadow-xl transition-all bg-white dark:bg-neutral-900"
       >
-        {name.map((item) => (
-          <motion.div
-            variants={items}
- 
-            className="border-2 flex flex-row p-4 gap-4 shadow-lg rounded-lg"
-            key={item.name}
+        {/* Image */}
+        <Image
+          src={item.images}
+          width={100}
+          height={40}
+          alt={item.name}
+          className="rounded-lg object-cover"
+        />
+
+        {/* Text Content */}
+        <div className="flex flex-col justify-between">
+          <div>
+            <h2 className="text-lg font-semibold">{item.name}</h2>
+            <p className="text-sm text-gray-500 mt-1">
+              {item.discreption}
+            </p>
+          </div>
+
+          {/* Join Button */}
+          <Link
+            href={item.href}
+            className="mt-3 inline-block bg-sky-500 hover:bg-sky-600 text-white text-sm px-4 py-2 rounded-lg transition"
           >
-            <Image
-              className="items-center justify-center "
-              src={item.images}
-              width={100}
-              height={50}
-              alt={item.name}
-            />
-            <div className="flex flex-col gap-4">
-              <h2>{item.name}</h2>
-              <p>{item.discreption}</p>
-              <div className="bg-sky-500">
-                <Link href={item.href}>Join</Link>
-              </div>
-            </div>
-          </motion.div>
-        ))}
+            Join
+          </Link>
+        </div>
       </motion.div>
-    </div>
-  );
+    ))}
+  </motion.div>
+</div>
+
+);
 }
 
 export default Page;
