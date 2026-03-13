@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { data } from "framer-motion/client";
-import Loader from "../Component/Loadingss";
+import Loader from "../Component/Loadings";
 
 const container = {
   hidden: { opacity: 0 },

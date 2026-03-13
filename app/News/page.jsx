@@ -66,7 +66,7 @@ function Page() {
   }, [searchTerm, news]);
 
   return (
-    <div className="bg-[#b6abcf] w-full">
+    <div className="bg-[#2c5364] w-full">
       <div className="grid grid-cols-1 md:grid-cols-2">
         <h1 className="ml-10 pt-5">News page</h1>
         <input
