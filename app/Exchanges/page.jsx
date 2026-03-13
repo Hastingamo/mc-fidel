@@ -1,6 +1,7 @@
+"use Client"
 import React from 'react'
 
-function page() {
+function Page() {
   return (
     <div>
       <h1>theee</h1>
@@ -8,4 +9,4 @@ function page() {
   )
 }
 
-export default page
+export default Page

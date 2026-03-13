@@ -40,9 +40,9 @@ function Headerss() {
         <Link href="/Register">
           <h1>register</h1>
         </Link>
-        <Link href="/Exchange">
+        {/* <Link href="/Exchange">
           <h1>Exchange rate page</h1>
-        </Link>
+        </Link> */}
             <Link href="/Exchanges">
           <h1>Exchange rate page</h1>
         </Link>
