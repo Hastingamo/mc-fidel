@@ -19,7 +19,7 @@ const SideBarss = () => {
   const menuItems = [
     { name: "Home", path: "/", icon: <Home size={20} /> },
     { name: "Product", path: "/Product", icon: <CoinsIcon size={20} /> },
-    { name: "Exchange", path: "/Exchange", icon: <GlassWater size={20} /> },
+    { name: "Exchange", path: "/Exchanges", icon: <GlassWater size={20} /> },
     { name: "Profile", path: "/Dashboard", icon: <User size={20} /> },
     { name: "News", path: "/News", icon: <NewspaperIcon size={20} /> },
     { name: "Community", path: "/Community", icon: <Heart size={20} /> },
