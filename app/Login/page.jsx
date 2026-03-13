@@ -20,7 +20,7 @@ function Page() {
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.8 }}
         initial={{ opacity: 0, scale: 0.9, y: 50 }}
-        className="w-4/5 mx-auto md:hidden bg-white border rounded-xl shadow-lg p-6 mt-6 "
+        className="w-4/5 mx-auto  bg-white border rounded-xl shadow-lg p-6 mt-6 "
       >
         <form onSubmit={handleFormSubmit} className="space-y-5">
           <div>
