@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { useState } from "react";
 import {
   Home,
   GlassWater,
@@ -14,7 +15,7 @@ import {
   X,
 } from "lucide-react";
 
-const SideBarss = ({ isOpen, setIsOpen }) => {
+const SideBarss = () => {
   const menuItems = [
     { name: "Home", path: "/", icon: <Home size={20} /> },
     { name: "Product", path: "/Product", icon: <CoinsIcon size={20} /> },
@@ -24,13 +25,14 @@ const SideBarss = ({ isOpen, setIsOpen }) => {
     { name: "Community", path: "/Community", icon: <Heart size={20} /> },
   ];
 
+   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       {/* Toggle Button */}
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed top-5 left-5 z-50 bg-gray-900 p-2 rounded-lg text-white shadow-lg"
+          className="fixed top-5 right-5 z-50 bg-gray-900 p-2 rounded-lg text-white shadow-lg"
         >
           <Menu />
         </button>

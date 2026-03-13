@@ -37,11 +37,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-       <MainLayOut>
          <Headerss />
             {children}
             <Footer />
-       </MainLayOut>
            
         </ThemeProvider>
       </body>
