@@ -43,6 +43,9 @@ function Headerss() {
         <Link href="/Exchange">
           <h1>Exchange rate page</h1>
         </Link>
+            <Link href="/Exchanges">
+          <h1>Exchange rate page</h1>
+        </Link>
         <Link href="/Community">
           <h1>Community page</h1>
         </Link>
