@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from 'react'
 import EmailDemo from './EmailDemo'
 
@@ -6,6 +7,7 @@ function Page() {
   return (
     <div>
       <Page/>
+      <EmailDemo/>
     </div>
   )
 }
