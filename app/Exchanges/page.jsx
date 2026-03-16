@@ -226,15 +226,15 @@ function Page() {
       initial={{ opacity: 0, y: 50, scale: 0.9 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.8 }}
-      className="bg-background text-foreground w-full min-h-screen p-4 font-bold"
+      className="bg-background  text-foreground w-full min-h-screen p-4 font-bold"
     >
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-3xl mb-6 md:mb-8 flex items-center gap-3">
+        <h1 className="text-3xl mb-6 mt-6 md:mb-8 flex items-center gap-3">
           <ArrowRightLeft className="text-primary" />
           Exchange Assets
         </h1>
 
-        <div className="w-full md:w-3/4 mx-auto border border-border bg-secondary/20 rounded-2xl overflow-hidden shadow-2xl min-h-[500px] grid md:grid-cols-[1fr_2fr]">
+        <div className="w-[96%] md:w-3/4 mx-auto border border-border bg-secondary/20 rounded-2xl overflow-hidden shadow-2xl min-h-[500px] grid md:grid-cols-[1fr_2fr]  md:mt-[5rem]">
             <div className="flex flex-row md:flex-col gap-4 p-4 md:p-6 bg-secondary/40 border-b md:border-b-0 md:border-r border-border">
             <button
               onClick={() => setActiveTab("sell")}

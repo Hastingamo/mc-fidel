@@ -10,11 +10,11 @@ const container = {
 hidden: { opacity: 0 },
 visible: {
 opacity: 1,
-transition: { staggerChildren: 0.2 }
+transition: { staggerChildren: 0.5 }
 }
 };
 
-const item = {
+const items = {
 hidden: { opacity: 0, y: 20 },
 visible: { opacity: 1, y: 0 }
 };
@@ -23,12 +23,10 @@ function Page() {
 return ( <div className="flex flex-col items-center min-h-screen py-10 px-4">
 
 ```
-  {/* Page Title */}
   <h1 className="text-3xl md:text-4xl font-bold mb-8 text-center">
     Join Our Community
   </h1>
 
-  {/* Community Cards */}
   <motion.div
     variants={container}
     initial="hidden"
@@ -38,11 +36,10 @@ return ( <div className="flex flex-col items-center min-h-screen py-10 px-4">
     {community.map((item) => (
       <motion.div
         key={item.name}
-        variants={item}
+        variants={items}
         whileHover={{ scale: 1.03 }}
         className="flex gap-4 p-5 border rounded-xl shadow-md hover:shadow-xl transition-all bg-white dark:bg-neutral-900"
       >
-        {/* Image */}
         <Image
           src={item.images}
           width={100}
@@ -51,7 +48,6 @@ return ( <div className="flex flex-col items-center min-h-screen py-10 px-4">
           className="rounded-lg object-cover"
         />
 
-        {/* Text Content */}
         <div className="flex flex-col justify-between">
           <div>
             <h2 className="text-lg font-semibold">{item.name}</h2>

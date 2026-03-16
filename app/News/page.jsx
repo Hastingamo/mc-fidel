@@ -4,14 +4,6 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Loader from "../Component/Loadings";
 
-const container = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
-};
-const items = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
 
 function Page() {
   const [loading, setLoading] = useState(true);
@@ -21,17 +13,16 @@ function Page() {
   const [filteredNews, setFilteredNews] = useState([]);
   const apikey = "d3s1cj1r01qldtrbhibgd3s1cj1r01qldtrbhic0";
 
+const container = {
+  hidden : { opacity: 0 },
+  visible : { opacity: 1, transition: { staggerChildren: 0.3, } }
+}
+const items = {
+  hidden : { opacity: 0, y: 20 },
+  visible : { opacity: 1, y: 0, }
+}
+
   useEffect(() => {
-    // const newss = () => {
-    //   fetch(`https://finnhub.io/api/v1/news?category=crypto&token=${apikey}`)
-    //     .then((response) => response.json())
-    //     .then((newsData) => {
-    //       setNews(newsData);
-    //       setLoading(false);
-    //       console.log(newsData);
-    //     });
-    // };
-    // newss();
         const fetchNews = async () => {
       try {
         const response = await fetch(
