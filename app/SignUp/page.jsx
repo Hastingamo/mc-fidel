@@ -2,6 +2,7 @@
 import React from "react";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import {User} from "@supabase/supabase-js"
 function Page() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

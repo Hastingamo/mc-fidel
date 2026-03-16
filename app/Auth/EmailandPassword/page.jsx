@@ -1,0 +1,13 @@
+import React, { useState } from 'react'
+import EmailDemo from './EmailDemo'
+
+function Page() {
+  const [mode, setMode] = useState("");
+  return (
+    <div>
+      <Page/>
+    </div>
+  )
+}
+
+export default Page

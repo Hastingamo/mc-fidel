@@ -105,7 +105,7 @@ export default function HomePage() {
             },
             {
               title: "Community",
-              description: "Connect with other crypto enthusiasts and share insights.",
+              description: "Connect with other crypto traders and share insights.",
               icon: <Users size={32} />,
               link: "/Community",
               color: "bg-orange-500/10 text-orange-500"
@@ -114,7 +114,7 @@ export default function HomePage() {
             <motion.div key={index} variants={fadeInUp}>
               <Link href={feature.link}>
                 <motion.div 
-                  className="p-8 rounded-3xl border border-foreground/10 bg-foreground/5 hover:bg-foreground/10 transition-colors h-full flex flex-col group cursor-pointer"
+                  className="p-4 md:p-8 rounded-3xl border border-foreground/10 bg-foreground/5 hover:bg-foreground/10 transition-colors h-full flex flex-col group cursor-pointer"
                   whileHover={{ y: -10 }}
                 >
                   <div className={`w-14 h-14 ${feature.color} rounded-2xl flex items-center justify-center mb-6`}>
@@ -143,7 +143,7 @@ export default function HomePage() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl font-bold mb-6">Why Choose Dams Crypto?</h2>
+            <h2 className="text-4xl font-bold mb-6">Why Choose bossVnn Crypto?</h2>
             <p className="text-lg text-foreground/70 mb-8">
               We provide the most comprehensive and accurate cryptocurrency data in the market. Our platform is designed for both beginners and professional traders.
             </p>
