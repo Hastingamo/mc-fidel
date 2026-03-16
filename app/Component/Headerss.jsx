@@ -25,29 +25,23 @@ function Headerss() {
         <Link href="/">
           <Image src="/Image/bossvnnlogo.png" alt="logo" width={40} height={40} className="w-10 h-10 rounded-full" />
         </Link>
-        <Link href="/Product">
-          <h1>Crypto page</h1>
+        <Link href="/Product" className="hover:text-blue-500 transition-colors">
+          <h1>Market</h1>
         </Link>
-        <Link href="/Login">
-          <h1>Login</h1>
+        <Link href="/Exchanges" className="hover:text-blue-500 transition-colors">
+          <h1>Exchanges</h1>
         </Link>
-        <Link href="/SignUp">
-          <h1>Sign Up</h1>
-        </Link>
-        <Link href="/News">
+        <Link href="/News" className="hover:text-blue-500 transition-colors">
           <h1>News</h1>
         </Link>
-        <Link href="/Register">
-          <h1>register</h1>
+        <Link href="/Community" className="hover:text-blue-500 transition-colors">
+          <h1>Community</h1>
         </Link>
-        {/* <Link href="/Exchange">
-          <h1>Exchange rate page</h1>
-        </Link> */}
-            <Link href="/Exchanges">
-          <h1>Exchange rate page</h1>
+        <Link href="/Login" className="hover:text-blue-500 transition-colors">
+          <h1>Login</h1>
         </Link>
-        <Link href="/Community">
-          <h1>Community page</h1>
+        <Link href="/SignUp" className="hover:text-blue-500 transition-colors">
+          <h1>Sign Up</h1>
         </Link>
         
 
