@@ -10,12 +10,7 @@ function Headerss() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  const mounthed = () => {
-    setMounted(true);
-  };
-
   useEffect(() => {
-    mounthed();
     setMounted(true);
   }, []);
 
@@ -36,9 +31,6 @@ function Headerss() {
         </Link>
         <Link href="/News">
           <h1>News</h1>
-        </Link>
-        <Link href="/Register">
-          <h1>register</h1>
         </Link>
         {/* <Link href="/Exchange">
           <h1>Exchange rate page</h1>
@@ -71,6 +63,9 @@ function Headerss() {
           {mounted &&
             (theme === "dark" ? <Sun size={20} /> : <Moon size={20} />)}
         </button>
+        <Link href="/SignUp">
+          <h1>Signup</h1>
+        </Link>
         <Link href="/Login">
           <h1>login</h1>
         </Link>
