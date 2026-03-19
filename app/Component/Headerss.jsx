@@ -21,7 +21,7 @@ function Headerss() {
 
   return (
     <>
-      <div className="hidden text-white md:flex md:gap-10 md:flex-row md:p-4 bg-[#06142E]">
+      <div className="hidden text-white lg:flex lg:gap-10 lg:flex-row lg:p-4 bg-[#06142E]">
         <Link href="/">
           <Image src="/Image/bossvnnlogo.png" alt="logo" width={40} height={40} className="w-10 h-10 rounded-full" />
         </Link>
@@ -61,7 +61,7 @@ function Headerss() {
         </button>
       </div>
 
-      <div className="grid p-4 grid-cols-4 md:hidden">
+      <div className="grid p-4 grid-cols-4 lg:hidden">
           <Image src="/Image/bossvnnlogo.png" alt="logo" width={40} height={40} className="w-10 h-10 rounded-full" />
         <button
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
