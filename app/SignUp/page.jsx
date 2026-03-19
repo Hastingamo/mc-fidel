@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { supabase } from "../lib/Client";
+import { usePathname, useRouter } from "next/navigation";
 
 function Page() {
   const [email, setEmail] = useState("");
@@ -12,7 +13,11 @@ function Page() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [gender, setGender] = useState("");
   const [isSignup, setIsSignup] = useState(true);
+
   const [loading, setLoading] = useState(false);
+  const navigate = useRouter();
+  const location = usePathname();
+  const from = location.state?.from?.pathname || "/";
 
   const toggleMode = () => {
     setIsSignup(!isSignup);
@@ -25,8 +30,10 @@ function Page() {
     setGender("");
   };
 
+  const isStrongPassword = (pw) =>
+    pw.length >= 8 && /[A-Z]/.test(pw) && /[a-z]/.test(pw);
+
   // const isValidEmail = (email) => /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);
-  const isStrongPassword = (pw) => pw.length >= 8 && /[A-Z]/.test(pw) && /[a-z]/.test(pw);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -56,7 +63,9 @@ function Page() {
         return;
       }
       if (!isStrongPassword(password)) {
-        setError("Password must be 8+ chars, with uppercase, lowercase, and number");
+        setError(
+          "Password must be 8+ chars, with uppercase, lowercase, and number",
+        );
         setLoading(false);
         return;
       }
@@ -65,9 +74,11 @@ function Page() {
         setLoading(false);
         return;
       }
-
       const { data, error } = await supabase.auth.signUp({
         email: email.toLowerCase(),
+          options: {
+    emailRedirectTo: 'http://localhost:3001/auth/callback',
+  },
         password,
         options: {
           data: {
@@ -91,6 +102,8 @@ function Page() {
       if (error) {
         setError(error.message);
       } else {
+        navigate(from, { replace: true });
+
         setMessage("Login successful! Redirecting...");
         console.log(data);
       }
@@ -143,7 +156,10 @@ function Page() {
         <form onSubmit={handleFormSubmit} className="space-y-4">
           {isSignup && (
             <div>
-              <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="username"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Username *
               </label>
               <input
@@ -158,7 +174,10 @@ function Page() {
           )}
 
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
               Email *
             </label>
             <input
@@ -172,7 +191,10 @@ function Page() {
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
               Password *
             </label>
             <input
@@ -184,8 +206,12 @@ function Page() {
               required
             />
             {password && (
-              <p className={`text-xs mt-1 ${isStrongPassword(password) ? 'text-green-600' : 'text-orange-600'}`}>
-                {isStrongPassword(password) ? 'Strong password' : 'Password should be 8+ chars with upper, lower, number'}
+              <p
+                className={`text-xs mt-1 ${isStrongPassword(password) ? "text-green-600" : "text-orange-600"}`}
+              >
+                {isStrongPassword(password)
+                  ? "Strong password"
+                  : "Password should be 8+ chars with upper, lower, number"}
               </p>
             )}
           </div>
@@ -193,7 +219,10 @@ function Page() {
           {isSignup && (
             <>
               <div>
-                <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-1">
+                <label
+                  htmlFor="confirmPassword"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
                   Confirm Password *
                 </label>
                 <input
@@ -206,7 +235,10 @@ function Page() {
                 />
               </div>
               <div>
-                <label htmlFor="gender" className="block text-sm font-medium text-gray-700 mb-1">
+                <label
+                  htmlFor="gender"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
                   Gender *
                 </label>
                 <select
@@ -225,8 +257,16 @@ function Page() {
             </>
           )}
 
-          {error && <div className="p-3 bg-red-50 border border-red-200 rounded-xl"><p className="text-sm text-red-600">{error}</p></div>}
-          {message && <div className="p-3 bg-green-50 border border-green-200 rounded-xl"><p className="text-sm text-green-600">{message}</p></div>}
+          {error && (
+            <div className="p-3 bg-red-50 border border-red-200 rounded-xl">
+              <p className="text-sm text-red-600">{error}</p>
+            </div>
+          )}
+          {message && (
+            <div className="p-3 bg-green-50 border border-green-200 rounded-xl">
+              <p className="text-sm text-green-600">{message}</p>
+            </div>
+          )}
 
           <button
             type="submit"
@@ -235,7 +275,25 @@ function Page() {
           >
             {loading ? (
               <>
-                <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" strokeLinecap="round" strokeLinejoin="round" pathLength="0" opacity=".25"/><path fill="none" opacity=".75" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7. 962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/></svg>
+                <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    pathLength="0"
+                    opacity=".25"
+                  />
+                  <path
+                    fill="none"
+                    opacity=".75"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7. 962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  />
+                </svg>
                 <span>Processing...</span>
               </>
             ) : (
@@ -249,7 +307,9 @@ function Page() {
               onClick={toggleMode}
               className="text-sm text-blue-600 hover:text-blue-700 font-medium underline"
             >
-              {isSignup ? "Already have an account? Log in" : "Need an account? Sign up"}
+              {isSignup
+                ? "Already have an account? Log in"
+                : "Need an account? Sign up"}
             </button>
           </div>
         </form>
