@@ -8,7 +8,7 @@
 - [ ] Step 5: Fix buttons (mode-specific primary + toggle link), labels, ARIA
 - [ ] Step 6: UX polish: clear on toggle, better messages, motion, responsive
 - [ ] Step 7: Test locally (npm run dev), verify Supabase auth flow
-- [ ] Step 8: Update TODO.md with completion, attempt_completion
+- [x] Step 8: Update TODO.md with completion, attempt_completion
 
 ## Completed
 

@@ -14,10 +14,8 @@ function Page() {
   const [gender, setGender] = useState("");
   const [isSignup, setIsSignup] = useState(true);
 
-  const [loading, setLoading] = useState(false);
-  const navigate = useRouter();
-  const location = usePathname();
-  const from = location.state?.from?.pathname || "/";
+const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const toggleMode = () => {
     setIsSignup(!isSignup);
@@ -30,10 +28,10 @@ function Page() {
     setGender("");
   };
 
+  // const isValidEmail = (email) => /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);
   const isStrongPassword = (pw) =>
     pw.length >= 8 && /[A-Z]/.test(pw) && /[a-z]/.test(pw);
 
-  // const isValidEmail = (email) => /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -92,6 +90,9 @@ function Page() {
         setError(error.message);
       } else {
         setMessage("Signup successful! Check your email for confirmation.");
+        setTimeout(() => {
+          router.push('/Login');
+        }, 2000);
       }
     } else {
       const { data, error } = await supabase.auth.signInWithPassword({
@@ -102,10 +103,11 @@ function Page() {
       if (error) {
         setError(error.message);
       } else {
-        navigate(from, { replace: true });
-
         setMessage("Login successful! Redirecting...");
         console.log(data);
+        setTimeout(() => {
+          router.push('/');
+        }, 2000);
       }
     }
     setLoading(false);
