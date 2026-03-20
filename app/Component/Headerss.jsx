@@ -28,18 +28,18 @@ function Headerss() {
         <Link href="/Product">
           <h1>Crypto page</h1>
         </Link>
-        <Link href="/Login">
-          <h1>Login</h1>
+        <Link href="/Profile">
+          <h1>Profile</h1>
         </Link>
         <Link href="/SignUp">
-          <h1>Sign Up</h1>
+          <h1>Register Up</h1>
         </Link>
         <Link href="/News">
           <h1>News</h1>
         </Link>
-        <Link href="/Register">
+        {/* <Link href="/Register">
           <h1>register</h1>
-        </Link>
+        </Link> */}
         {/* <Link href="/Exchange">
           <h1>Exchange rate page</h1>
         </Link> */}

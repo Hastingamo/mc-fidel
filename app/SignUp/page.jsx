@@ -91,7 +91,7 @@ const [loading, setLoading] = useState(false);
       } else {
         setMessage("Signup successful! Check your email for confirmation.");
         setTimeout(() => {
-          router.push('/Login');
+          setIsSignup(false)
         }, 2000);
       }
     } else {
@@ -106,7 +106,7 @@ const [loading, setLoading] = useState(false);
         setMessage("Login successful! Redirecting...");
         console.log(data);
         setTimeout(() => {
-          router.push('/');
+          router.push('/Profile');
         }, 2000);
       }
     }
