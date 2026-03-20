@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-   "dev": "cross-env NODE_OPTIONS=--max-old-space-size=4096 next dev",
-  "build": "cross-env NODE_OPTIONS=--max-old-space-size=4096 next build",
-    "start": "NODE_OPTIONS='--max-old-space-size=4096' next start",
+    "dev": "NODE_OPTIONS=--max-old-space-size=6144 next dev",
+"build": "set NODE_OPTIONS=--max-old-space-size=6144 && next build",
+    "start": "NODE_OPTIONS=--max-old-space-size=6144 next start",
     "lint": "eslint"
   },
   "dependencies": {

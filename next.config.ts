@@ -1,14 +1,17 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // /* config options here */    domains: [
-  //     "static.finnhub.io",
-  //     "static2.finnhub.io",
-  //     "cdn.finnhub.io",
-  //     "coin-images.coingecko.com",
-  //           "images.investinglive.com",
-  //           //  "data.bloomberglp.com"  
-  //   ],
+ productionBrowserSourceMaps: false,
+
+  // Disable minification if still OOMing
+  // swcMinify: false,
+
+  experimental: {
+    // Reduce workers during build
+    workerThreads: false,
+    cpus: 1,
+  },
+
     images: {
     remotePatterns: [
       {
