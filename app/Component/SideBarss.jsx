@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { useState } from "react";
 import {
   Home,
   GlassWater,
@@ -15,7 +14,7 @@ import {
   X,
 } from "lucide-react";
 
-const SideBarss = () => {
+const SideBarss = ({ isOpen, setIsOpen }) => {
   const menuItems = [
     { name: "Home", path: "/", icon: <Home size={20} /> },
     { name: "Product", path: "/Product", icon: <CoinsIcon size={20} /> },
@@ -26,7 +25,6 @@ const SideBarss = () => {
     { name: "Register", path: "/SignUp", icon:<GlassWater size={20}/>}
   ];
 
-   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       {!isOpen && (
@@ -61,7 +59,7 @@ const SideBarss = () => {
         {/* Menu */}
         <div className="flex flex-col mt-6 space-y-2 px-4">
           {menuItems.map((item, index) => (
-            <Link key={index} href={item.path}>
+            <Link key={index} href={item.path} onClick={() => setIsOpen(false)}>
               <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-700 transition cursor-pointer">
                 {item.icon}
                 <span>{item.name}</span>
