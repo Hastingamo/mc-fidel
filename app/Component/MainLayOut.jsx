@@ -11,8 +11,8 @@ export default function MainLayout({ children }) {
       <SideBarss isOpen={isOpen} setIsOpen={setIsOpen} />
       <div
         className={`transition-all duration-300 ${
-          isOpen ? "pl-64" : "pl-20"
-        } md:pl-0`}
+          isOpen ? "md:pl-64 pl-0" : "md:pl-20 pl-0"
+        }`}
       >
         {children}
       </div>

@@ -27,14 +27,12 @@ const SideBarss = ({ isOpen, setIsOpen }) => {
 
   return (
     <>
-      {!isOpen && (
-        <button
-          onClick={() => setIsOpen(true)}
-          className="fixed top-5 right-5 z-50 bg-gray-900 p-2 rounded-lg text-white shadow-lg"
-        >
-          <Menu />
-        </button>
-      )}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="fixed top-5 left-5 z-50 bg-gray-900 p-2 rounded-lg text-white shadow-lg"
+      >
+        {isOpen ? <X /> : <Menu />}
+      </button>
 
       {/* Sidebar */}
       <div
@@ -43,13 +41,16 @@ const SideBarss = ({ isOpen, setIsOpen }) => {
       >
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b border-gray-700">
-          <Image
-            src="/Image/bossvnnlogo.png"
-            alt="logo"
-            width={40}
-            height={40}
-            className="rounded-full"
-          />
+          <div className="flex items-center gap-3">
+            <Image
+              src="/Image/bossvnnlogo.png"
+              alt="logo"
+              width={40}
+              height={40}
+              className="rounded-full"
+            />
+            <span className="font-bold text-xl">bossVnn</span>
+          </div>
 
           <button onClick={() => setIsOpen(false)}>
             <X />
