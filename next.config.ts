@@ -1,41 +1,37 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
- productionBrowserSourceMaps: false,
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
 
-  // Disable minification if still OOMing
-  // swcMinify: false,
+const nextConfig: NextConfig = {
+  productionBrowserSourceMaps: false,
 
   experimental: {
-    // Reduce workers during build
     workerThreads: false,
     cpus: 1,
   },
 
-    images: {
+  images: {
+    unoptimized: true, // add this to save build memory
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'coin-images.coingecko.com',
         port: '',
-      },  
+      },
       {
         protocol: 'https',
-        hostname:      "static.finnhub.io",
+        hostname: 'static.finnhub.io',
         port: '',
       },
       {
         protocol: 'https',
-        hostname: "static2.finnhub.io",
+        hostname: 'static2.finnhub.io',
         port: '',
       },
-
     ],
-
-   
   },
-
-  
 };
 
-export default nextConfig;
+export default withBundleAnalyzer(nextConfig);

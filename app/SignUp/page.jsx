@@ -114,12 +114,12 @@ const [loading, setLoading] = useState(false);
   };
 
   return (
-    <div className="min-h-screen bg-[#381932] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 ">
+    <div className="min-h-screen bg-gradient-to-br from-[#fff3e6] to-[#381932] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 ">
       <motion.div
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.8 }}
         initial={{ opacity: 0, scale: 0.9, y: 50 }}
-        className="w-full max-w-md bg-white border rounded-2xl shadow-xl p-8 space-y-6"
+        className="w-full max-w-md bg-[#fff3e6] border rounded-2xl shadow-xl p-8 space-y-6"
       >
         <div>
           <h1 className="text-3xl font-bold text-center text-gray-900">
@@ -135,8 +135,8 @@ const [loading, setLoading] = useState(false);
             type="button"
             className={`flex-1 py-3 px-4 rounded-full text-sm font-semibold transition-all ${
               isSignup
-                ? "bg-white shadow-sm text-gray-900"
-                : "text-gray-500 hover:text-gray-900 hover:bg-gray-200"
+                ? "bg-gradient-to-br from-[#fff3e6] to-[#381932]"
+                : ""
             }`}
             onClick={() => setIsSignup(true)}
           >
@@ -146,8 +146,8 @@ const [loading, setLoading] = useState(false);
             type="button"
             className={`flex-1 py-3 px-4 rounded-full text-sm font-semibold transition-all ${
               !isSignup
-                ? "bg-white shadow-sm text-gray-900"
-                : "text-gray-500 hover:text-gray-900 hover:bg-gray-200"
+                ? "bg-gradient-to-br from-[#fff3e6] to-[#381932]"
+                : ""
             }`}
             onClick={() => setIsSignup(false)}
           >
@@ -187,7 +187,7 @@ const [loading, setLoading] = useState(false);
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+              className="w-full px-3 py-2 border border-gradient-to-br from-[#fff3e6] to-[#381932] rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
               required
             />
           </div>
@@ -204,7 +204,7 @@ const [loading, setLoading] = useState(false);
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+              className="w-full px-3 py-2 border border-gradient-to-br from-[#fff3e6] to-[#381932] rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
               required
             />
             {password && (

@@ -86,15 +86,15 @@ function Page() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
+    <div className="min-h-screen pt-[6rem] md:pl-[10rem] md:pt-[8rem] lg:pl-[20rem] lg:pt-[12rem] xl:flex xl:items-center xl:justify-center xl:pl-[6rem] xl:pt-[4rem] py-12 px-4 bg-gradient-to-br from-[#004643] to-[#foede5] dark:from-slate-900 dark:to-slate-800">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="w-full max-w-md bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl border border-slate-200/50 dark:border-slate-700/50 rounded-3xl shadow-2xl p-8 space-y-6"
+        className="w-[97%] max-w-md bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl border border-slate-200/50 dark:border-slate-700/50 rounded-3xl shadow-2xl p-8 space-y-6"
       >
         {userDetails ? (
-          <>
+          <div className="m">
             <div className="text-center">
               <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center text-white text-2xl font-bold shadow-lg">
                 {userDetails.user_metadata?.username?.[0]?.toUpperCase() || 'U'}
@@ -181,7 +181,7 @@ function Page() {
                 </button>
               </div>
             )}
-          </>
+          </div>
         ) : (
           <>
             <h1 className="text-3xl flex justify-center font-bold text-gray-900 dark:text-white mb-6">

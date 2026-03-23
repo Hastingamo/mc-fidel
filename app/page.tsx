@@ -24,7 +24,6 @@ const staggerContainer = {
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-background text-foreground overflow-x-hidden">
-      {/* Hero Section */}
       <section className="relative h-[90vh] flex items-center justify-center px-4 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-background z-10" />
@@ -72,7 +71,6 @@ export default function HomePage() {
         </motion.div>
       </section>
 
-      {/* Features Grid */}
       <section className="py-24 px-4 max-w-7xl mx-auto">
         <motion.div 
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
@@ -134,7 +132,6 @@ export default function HomePage() {
         </motion.div>
       </section>
 
-      {/* Why Us Section */}
       <section className="py-24 bg-foreground/5">
         <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
           <motion.div

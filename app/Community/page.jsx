@@ -56,7 +56,6 @@ return ( <div className="flex flex-col items-center min-h-screen py-10 px-4">
             </p>
           </div>
 
-          {/* Join Button */}
           <Link
             href={item.href}
             className="mt-3 inline-block bg-sky-500 hover:bg-sky-600 text-white text-sm px-4 py-2 rounded-lg transition"
