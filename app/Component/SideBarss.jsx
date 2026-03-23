@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { useState } from "react";
 import {
   Home,
   GlassWater,
@@ -15,7 +14,7 @@ import {
   X,
 } from "lucide-react";
 
-const SideBarss = () => {
+const SideBarss = ({ isOpen, setIsOpen }) => {
   const menuItems = [
     { name: "Home", path: "/", icon: <Home size={20} /> },
     { name: "Product", path: "/Product", icon: <CoinsIcon size={20} /> },
@@ -26,17 +25,14 @@ const SideBarss = () => {
     { name: "Register", path: "/SignUp", icon:<GlassWater size={20}/>}
   ];
 
-   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      {!isOpen && (
-        <button
-          onClick={() => setIsOpen(true)}
-          className="fixed top-5 right-5 z-50 bg-gray-900 p-2 rounded-lg text-white shadow-lg"
-        >
-          <Menu />
-        </button>
-      )}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="fixed top-5 left-5 z-50 bg-gray-900 p-2 rounded-lg text-white shadow-lg"
+      >
+        {isOpen ? <X /> : <Menu />}
+      </button>
 
       {/* Sidebar */}
       <div
@@ -45,13 +41,16 @@ const SideBarss = () => {
       >
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b border-gray-700">
-          <Image
-            src="/Image/bossvnnlogo.png"
-            alt="logo"
-            width={40}
-            height={40}
-            className="rounded-full"
-          />
+          <div className="flex items-center gap-3">
+            <Image
+              src="/Image/bossvnnlogo.png"
+              alt="logo"
+              width={40}
+              height={40}
+              className="rounded-full"
+            />
+            <span className="font-bold text-xl">bossVnn</span>
+          </div>
 
           <button onClick={() => setIsOpen(false)}>
             <X />
@@ -61,7 +60,7 @@ const SideBarss = () => {
         {/* Menu */}
         <div className="flex flex-col mt-6 space-y-2 px-4">
           {menuItems.map((item, index) => (
-            <Link key={index} href={item.path}>
+            <Link key={index} href={item.path} onClick={() => setIsOpen(false)}>
               <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-700 transition cursor-pointer">
                 {item.icon}
                 <span>{item.name}</span>

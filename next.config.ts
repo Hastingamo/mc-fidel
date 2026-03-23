@@ -13,7 +13,7 @@ const nextConfig: NextConfig = {
   },
 
   images: {
-    unoptimized: true, // add this to save build memory
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
