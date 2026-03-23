@@ -1,5 +1,6 @@
 import React from "react";
-import NewsContent from "./NewsContent";
+import NewsContent from "./NewContent";
+
 
 export default async function Page() {
   let initialNews = [];
