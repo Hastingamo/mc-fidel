@@ -1,5 +1,5 @@
 import React from "react";
-import ExchangesContent from "./ExchangesContent";
+import ExchangesContent from "./ExchangeContent";
 
 export default async function Page() {
   let initialCoins = [];
