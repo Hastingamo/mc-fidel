@@ -21,6 +21,13 @@ export default function ExchangesContent({ initialCoins }) {
   const [activeTab, setActiveTab] = useState("sell");
   const [loading, setLoading] = useState(false);
 
+  // Re-enable loading indicator during tab transitions or user actions if needed
+  const handleTabChange = (tab) => {
+    setLoading(true);
+    setActiveTab(tab);
+    setTimeout(() => setLoading(false), 300);
+  };
+
   const phone = "2348036210152";
 
   const validateCurrency = (symbol) => {
@@ -217,7 +224,7 @@ export default function ExchangesContent({ initialCoins }) {
             {["sell", "buy", "swap"].map((tab) => (
               <button
                 key={tab}
-                onClick={() => setActiveTab(tab)}
+                onClick={() => handleTabChange(tab)}
                 className={`flex items-center gap-2 px-6 py-4 rounded-xl transition-all duration-300 font-bold capitalize
                   ${activeTab === tab
                     ? "bg-blue-600 text-white shadow-lg translate-x-1"

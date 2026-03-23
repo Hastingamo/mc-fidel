@@ -4,7 +4,16 @@ import NewsContent from "./NewsContent";
 export default async function Page() {
   let initialNews = [];
   let error = null;
-  const apikey = "d3s1cj1r01qldtrbhibgd3s1cj1r01qldtrbhic0";
+  const apikey = process.env.FINNHUB_API_KEY;
+
+  if (!apikey) {
+    console.error("FINNHUB_API_KEY is missing from environment variables.");
+    return (
+      <div className="bg-[#2c5364] w-full min-h-screen flex items-center justify-center">
+        <p className="text-white font-bold">News service currently unavailable.</p>
+      </div>
+    );
+  }
 
   try {
     const response = await fetch(
