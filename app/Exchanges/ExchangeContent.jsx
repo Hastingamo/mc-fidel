@@ -210,7 +210,7 @@ export default function ExchangesContent({ initialCoins }) {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="bg-background text-foreground w-full min-h-screen p-4"
+      className="bg-background text-foreground w-full h-fit p-4"
     >
       <div className="max-w-6xl mx-auto">
         <h1 className="text-4xl font-bold mb-10 flex items-center gap-3">
@@ -243,15 +243,10 @@ export default function ExchangesContent({ initialCoins }) {
                 <Loader2 className="animate-spin text-blue-500" size={48} />
               </div>
             )}
-            {/* <CoinsDataList /> */}
+          
             {renderTabContent()}
             
-            <div className="mt-12 p-6 bg-blue-500/5 rounded-2xl border border-blue-500/10">
-               <h3 className="font-bold text-blue-500 mb-2">How it works</h3>
-               <p className="text-sm text-foreground/70">
-                 Enter the amount and asset you want to trade. Clicking the button will open a secure WhatsApp chat where our agents will complete the transaction with you manually.
-               </p>
-            </div>
+     
           </div>
         </div>
       </div>

@@ -5,22 +5,15 @@ import NewsContent from "./NewContent";
 export default async function Page() {
   let initialNews = [];
   let error = null;
-  const apikey = process.env.FINNHUB_API_KEY;
+  const apikey = process.env.NEXT_FINNHUB_API_KEY;
 
-  if (!apikey) {
-    console.error("FINNHUB_API_KEY is missing from environment variables.");
-    return (
-      <div className="bg-[#2c5364] w-full min-h-screen flex items-center justify-center">
-        <p className="text-white font-bold">News service currently unavailable.</p>
-      </div>
-    );
-  }
+ 
 
   try {
     const response = await fetch(
       `https://finnhub.io/api/v1/news?category=crypto&token=${apikey}`,
       {
-        next: { revalidate: 600 } // ISR: Revalidate news every 10 minutes (600 seconds)
+        next: { revalidate: 600 } 
       }
     );
 
@@ -31,7 +24,7 @@ export default async function Page() {
     initialNews = await response.json();
   } catch (err) {
     error = err.message;
-    console.error("News ISR fetch error:", err);
+    console.error(err);
   }
 
   return (
